@@ -14,14 +14,19 @@ driver.get("https://veoci.com/veoci/134376/processes/236235613/invocations")
 
 
 def submit_daily_screening():
+    sleep(30)
+
     daily_screening_submit_btn = driver.find_elements_by_xpath(
         '//*[@id="app"]/div/main/div/div/div[2]/div/div[2]/div/div/div/div/div/div[2]/button'
     )[0]
     daily_screening_submit_btn.click()
 
+    return driver.quit()
 
-# Complete FGCU sign in form
+
 def fgcu_sign_in_page(email, password):
+    sleep(10)
+
     fgcu_email_input_element = driver.find_element_by_id("branding-username")
     fgcu_email_input_element.clear()
     fgcu_email_input_element.send_keys(email)
@@ -33,12 +38,9 @@ def fgcu_sign_in_page(email, password):
     fgcu_submit_btn = driver.find_element_by_id("branding-sumbit-button")
     fgcu_submit_btn.click()
 
-    sleep(20)
-
-    submit_daily_screening()
+    return submit_daily_screening()
 
 
-# Complete Veoci sign in form
 def veoci_sign_in_page(email):
     veoci_email_input_element = driver.find_element_by_id("j_username")
     veoci_email_input_element.clear()
@@ -52,10 +54,7 @@ def veoci_sign_in_page(email):
     fgcu_sign_in_email = "SIGN EMAIL"
     fgcu_sign_in_password = "SIGN PASSWORD"
 
-    # Pause the program to allow the page to finish loading
-    sleep(3)
-
-    fgcu_sign_in_page(fgcu_sign_in_email, fgcu_sign_in_password)
+    return fgcu_sign_in_page(fgcu_sign_in_email, fgcu_sign_in_password)
 
 
 veoci_sign_in_page("ENTER VEOCI SIGN EMAIL")
