@@ -24,16 +24,19 @@ def submit_daily_screening():
     return driver.quit()
 
 
+def fill_input_element(element, input_text):
+    element.clear()
+    element.send_keys(input_text)
+
+
 def fgcu_sign_in_page(email, password):
     sleep(10)
 
     fgcu_email_input_element = driver.find_element_by_id("branding-username")
-    fgcu_email_input_element.clear()
-    fgcu_email_input_element.send_keys(email)
+    fill_input_element(fgcu_email_input_element, email)
 
     fgcu_password_input_element = driver.find_element_by_id("branding-password")
-    fgcu_password_input_element.clear()
-    fgcu_password_input_element.send_keys(password)
+    fill_input_element(fgcu_password_input_element, password)
 
     fgcu_submit_btn = driver.find_element_by_id("branding-sumbit-button")
     fgcu_submit_btn.click()
@@ -43,8 +46,7 @@ def fgcu_sign_in_page(email, password):
 
 def veoci_sign_in_page(email):
     veoci_email_input_element = driver.find_element_by_id("j_username")
-    veoci_email_input_element.clear()
-    veoci_email_input_element.send_keys(email)
+    fill_input_element(veoci_email_input_element, email)
 
     veoci_form_submit_btn = driver.find_element_by_xpath(
         '//*[@id="veoci-password-login"]/div/div[1]/input[2]'
