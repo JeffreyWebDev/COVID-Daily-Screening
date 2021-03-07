@@ -54,8 +54,8 @@ def veoci_sign_in_page(email):
     )
     veoci_form_submit_btn.click()
 
-    fgcu_sign_in_email = "SIGN EMAIL"
-    fgcu_sign_in_password = "SIGN PASSWORD"
+    fgcu_sign_in_email = input("FGCU login email: ")
+    fgcu_sign_in_password = input("FGCU login password: ")
 
     return fgcu_sign_in_page(fgcu_sign_in_email, fgcu_sign_in_password)
 
@@ -66,5 +66,6 @@ if IPaddress == "127.0.0.1":
     print("No Internet connection")
     quit()
 else:
-    veoci_sign_in_page("ENTER VEOCI SIGN EMAIL")
+    veoci_email = input("Please input Veoci email: ")
+    veoci_sign_in_page(veoci_email)
 
