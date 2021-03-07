@@ -1,4 +1,5 @@
 from selenium import webdriver
+import socket
 from time import sleep
 
 # Path to browser webdriver
@@ -59,4 +60,11 @@ def veoci_sign_in_page(email):
     return fgcu_sign_in_page(fgcu_sign_in_email, fgcu_sign_in_password)
 
 
-veoci_sign_in_page("ENTER VEOCI SIGN EMAIL")
+IPaddress = socket.gethostbyname(socket.gethostname())
+
+if IPaddress == "127.0.0.1":
+    print("No Internet connection")
+    quit()
+else:
+    veoci_sign_in_page("ENTER VEOCI SIGN EMAIL")
+
